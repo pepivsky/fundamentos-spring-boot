@@ -1,6 +1,7 @@
 package com.pepivsky.fundamentosspring;
 
 import com.pepivsky.fundamentosspring.component.ComponentDependency;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,7 +12,8 @@ public class FundamentosspringApplication implements CommandLineRunner {
     private ComponentDependency componentDependency;
 
     // constructor de la clase que recibe la dependencia para poderla inyectar
-    public FundamentosspringApplication(ComponentDependency componentDependency) { // se puede omitir la notacion @Autowired en las nuevas versiones de Spring
+    //se puede omitir la notacion @Autowired en las nuevas versiones de Spring
+    public FundamentosspringApplication(@Qualifier("componentTwoImplement") ComponentDependency componentDependency) { // qualifier indica que dependencia queremos usar cuando existe mas de una implementacion
         this.componentDependency = componentDependency; // inyectando la dependencia en el constructor
     }
 
